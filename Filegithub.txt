@@ -1,0 +1,52 @@
+1.Set username
+=================
+git config --global user.name "danish2006"
+---------------------------------
+2.confirm username
+====================
+git config --global user.name
+----------------------------------
+3.set email
+================
+git config --global user.email danish.rgtu@gmail.com
+---------------------
+git config --global user.email
+================================
+4.set username and password credentials
+-------------------------------------
+git config credential.helper store
+git push https://github.com/owner/repo.git
+Username for 'https://github.com': <USERNAME>
+Password for 'https://USERNAME@github.com': <PASSWORD>
+
+
+5.To Change the Branch
+============================
+git checkout |master|UAT|SIT|
+
+
+6.Cloning repository
+=========================
+git clone url of repository
+
+7.change directory
+==================
+cd Testing/Selenium/NewTesting/
+
+8.Check Status
+============================
+git status
+
+9.Add Project/File
+=================
+git add Project/File added local to git repository
+
+git commit -m "some message"
+
+
+10.git push  send local to central
+
+https://github.com/danish2006/Testing
+
+
+
