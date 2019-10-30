@@ -1,8 +1,10 @@
 package com.account.app;
 
-public class Demo2 {
+public class Demo3 {
 
 	public static void main(String[] args) {
-	System.out.println("My name is Hello"); 
+		System.out.println("Hello");
+
 	}
+
 }
