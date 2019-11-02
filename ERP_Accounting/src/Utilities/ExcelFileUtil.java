@@ -19,7 +19,7 @@ public class ExcelFileUtil
 	//to read excel file path
 	public ExcelFileUtil() throws Throwable
 	{
-		FileInputStream fis=new FileInputStream("D:\\Ojt4oclock\\ERP_Accounting\\TestInput\\TestData.xlsx");
+		FileInputStream fis=new FileInputStream("D:\\Ojt4oclock\\ERP_Accounting\\TestInput\\InputSheetData.xlsx");
 		wb=WorkbookFactory.create(fis);
 	}
 	//count no of rows sheets 
@@ -79,7 +79,7 @@ public class ExcelFileUtil
 			style.setFont(font);
 			r.getCell(column).setCellStyle(style);
 		}
-		FileOutputStream fos=new FileOutputStream("D:\\Ojt4oclock\\ERP_Accounting\\TestOutput\\Supplier.xlsx");
+		FileOutputStream fos=new FileOutputStream("D:\\Ojt4oclock\\ERP_Accounting\\TestOutput\\Hybrid.xlsx");
 		wb.write(fos);
 		fos.close();
 	}

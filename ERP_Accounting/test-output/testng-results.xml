@@ -1,31 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
-    <line>
-      <![CDATA[No of Rows::5 No of columns::10]]>
-    </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="175823" started-at="2019-10-29T13:27:13Z" finished-at="2019-10-29T13:30:09Z">
+  <suite name="Default suite" duration-ms="26887" started-at="2019-11-01T12:35:40Z" finished-at="2019-11-01T12:36:07Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="175823" started-at="2019-10-29T13:27:13Z" finished-at="2019-10-29T13:30:09Z">
-      <class name="DriverFactory.DataDrivenFramework">
-        <test-method status="PASS" signature="launchApp()[pri:0, instance:DriverFactory.DataDrivenFramework@26be92ad]" name="launchApp" is-config="true" duration-ms="20627" started-at="2019-10-29T18:57:13Z" finished-at="2019-10-29T18:57:33Z">
+    <test name="Default test" duration-ms="26887" started-at="2019-11-01T12:35:40Z" finished-at="2019-11-01T12:36:07Z">
+      <class name="DriverFactory.AppTest">
+        <test-method status="PASS" signature="kickStart()[pri:0, instance:DriverFactory.AppTest@457e2f02]" name="kickStart" duration-ms="26870" started-at="2019-11-01T18:05:40Z" finished-at="2019-11-01T18:06:07Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- launchApp -->
-        <test-method status="PASS" signature="stock()[pri:0, instance:DriverFactory.DataDrivenFramework@26be92ad]" name="stock" duration-ms="148340" started-at="2019-10-29T18:57:33Z" finished-at="2019-10-29T19:00:02Z">
-          <reporter-output>
-            <line>
-              <![CDATA[No of Rows::5 No of columns::10]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- stock -->
-        <test-method status="PASS" signature="logoutApp()[pri:0, instance:DriverFactory.DataDrivenFramework@26be92ad]" name="logoutApp" is-config="true" duration-ms="6843" started-at="2019-10-29T19:00:02Z" finished-at="2019-10-29T19:00:09Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- logoutApp -->
-      </class> <!-- DriverFactory.DataDrivenFramework -->
+        </test-method> <!-- kickStart -->
+      </class> <!-- DriverFactory.AppTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
