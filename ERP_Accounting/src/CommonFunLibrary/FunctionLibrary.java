@@ -1,12 +1,21 @@
 package CommonFunLibrary;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import Utilities.PropertyFileUtil;
 
@@ -99,7 +108,7 @@ public class FunctionLibrary {
 	{
 		if(locatort.equalsIgnoreCase("id"))
 		{
-			driver.findElement(By.id(locatorv)).click();
+			driver.findElement(By.id(locatorv)).sendKeys(Keys.ENTER);
 		}
 		else if(locatort.equalsIgnoreCase("name"))
 		{
@@ -132,5 +141,77 @@ public class FunctionLibrary {
 		SimpleDateFormat sdf=new SimpleDateFormat("YYYY_MM_dd_ss");
 		return sdf.format(date);
 	}
+	/**
+	 * ProjectName:ERP_Stock
+	 *  TesterName:Danish 
+	 *  Module Name:captureData
+	 * Creation Date:
+	 * @throws Throwable 
+	 */
+	public static void captureData(WebDriver driver,String locatort,String locatorv) throws Throwable
+	{
+		String snumbers="";
+		if(locatort.equalsIgnoreCase("id"))
+		{
+			snumbers=driver.findElement(By.id(locatorv)).getAttribute("value");
+		}
+		else if(locatort.equalsIgnoreCase("xpath"))
+		{
+			snumbers=driver.findElement(By.xpath(locatorv)).getAttribute("value");
+		}
+		else if(locatort.equalsIgnoreCase("name"))
+		{
+			snumbers=driver.findElement(By.name(locatorv)).getAttribute("value");
+		}
+		
+		FileWriter fw=new FileWriter("D:\\Ojt4oclock\\ERP_Accounting\\CaptureData\\supplier.txt");
+		BufferedWriter bw=new BufferedWriter(fw);
+		bw.write(snumbers);
+		bw.flush();
+		bw.close();
 	
+	}
+	/**
+	 * ProjectName:ERP_Stock
+	 *  TesterName:Danish 
+	 *  Module Name:tableValidation
+	 * Creation Date:
+	 * @throws Throwable 
+	 * @throws Throwable 
+	 */
+	public static void tableValidation(WebDriver driver,String colummndata) throws Throwable
+	{
+		FileReader fr=new FileReader("D:\\Ojt4oclock\\ERP_Accounting\\CaptureData\\supplier.txt");
+		BufferedReader bw=new BufferedReader(fr);
+		String Exp_data=bw.readLine();
+		//convert columndata into integer
+		int column=Integer.parseInt(colummndata);
+		if(driver.findElement(By.xpath(PropertyFileUtil.getValueForKey("search-box"))).isDisplayed())
+		{
+			driver.findElement(By.xpath(PropertyFileUtil.getValueForKey("search-box"))).clear();
+			Thread.sleep(3000);
+			driver.findElement(By.xpath(PropertyFileUtil.getValueForKey("search-box"))).sendKeys(Exp_data);
+			driver.findElement(By.xpath(PropertyFileUtil.getValueForKey("search-button"))).click();
+			Thread.sleep(3000);
+		}
+		else{
+			driver.findElement(By.xpath(PropertyFileUtil.getValueForKey("search-panel"))).click();
+			driver.findElement(By.xpath(PropertyFileUtil.getValueForKey("search-box"))).clear();
+			Thread.sleep(3000);
+			driver.findElement(By.xpath(PropertyFileUtil.getValueForKey("search-box"))).sendKeys(Exp_data);
+			driver.findElement(By.xpath(PropertyFileUtil.getValueForKey("search-button"))).click();
+			Thread.sleep(3000);
+		}
+		WebElement table=driver.findElement(By.xpath(PropertyFileUtil.getValueForKey("sup-table")));
+		List<WebElement> rows=table.findElements(By.tagName("tr"));
+		for(int i=1;i<rows.size()-1;i++)
+		{
+			String act_data=driver.findElement(By.xpath("//table[@id='tbl_a_supplierslist']/tbody/tr["+i+"]/td["+column+"]/div/span/span")).getText();
+			System.out.println("No of rows are::"+rows.size());
+			Thread.sleep(3000);
+			System.out.println(Exp_data+"---------"+act_data);
+			Assert.assertEquals(Exp_data,act_data,"snumber is not matching");
+			break;
+		}
+	}
 }
